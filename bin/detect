@@ -1,8 +1,9 @@
 #!/bin/sh
 
+
+echo $(pwd)
 if grep -Fxq "playwright" requirements.txt
 then
-	echo $(pwd)
 	echo "---> App can be serviced by this buildpack"
 	exit 0
 else
