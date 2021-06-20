@@ -1,7 +1,9 @@
 #!/bin/sh
 
+BUILD_DIR=$1
 echo "-----> Downloaing browsers builds for playwright..."
 
+cd "$BUILD_DIR"
 python -m playwright install
 
 echo "-----> Builds downloaded"
