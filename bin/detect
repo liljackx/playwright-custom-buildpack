@@ -1,8 +1,9 @@
 #!/bin/sh
 
-if grep -Fxq "playwright" inthere.txt
+if grep -Fxq "playwright" requirements.txt
 then
-	echo "YES"
+	echo "---> App can be serviced by this buildpack"
+	return 0
 else
-	echo "NO"
+	return 1
 fi
