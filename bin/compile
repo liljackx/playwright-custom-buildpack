@@ -2,6 +2,6 @@
 
 echo "-----> Downloaing browsers builds for playwright..."
 
-playwright install
+python -m playwright install
 
 echo "-----> Builds downloaded"
