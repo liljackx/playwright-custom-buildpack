@@ -1,0 +1,7 @@
+#!/bin/sh
+
+echo "-----> Downloaing browsers builds for playwright..."
+
+playwright install
+
+echo "-----> Builds downloaded"

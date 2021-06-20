@@ -1,0 +1,8 @@
+#!/bin/sh
+
+if grep -Fxq "playwright" inthere.txt
+then
+	echo "YES"
+else
+	echo "NO"
+fi
