@@ -2,6 +2,7 @@
 
 if grep -Fxq "playwright" requirements.txt
 then
+	pwd
 	echo "---> App can be serviced by this buildpack"
 	return 0
 else
