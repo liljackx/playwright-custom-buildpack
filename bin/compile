@@ -1,6 +1,8 @@
 #!/bin/sh
 
-BUILD_DIR=$1
+BIN_DIR=$(cd "$(dirname "$0")"; pwd) # absolute path
+ROOT_DIR=$(dirname "$BIN_DIR")
+cd "$ROOT_DIR"
 echo "-----> Downloaing browsers builds for playwright..."
 
 cd "$BUILD_DIR"
