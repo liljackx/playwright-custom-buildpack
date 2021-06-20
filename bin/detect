@@ -2,7 +2,8 @@
 
 BUILD_DIR=$1
 
-if grep -Fxq "playwright" $BUILD_DIR/requirements.txt
+#if grep -Fxq "playwright" $BUILD_DIR/requirements.txt
+if true
 then
 	echo "---> App can be serviced by this buildpack"
 	exit 0
