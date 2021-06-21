@@ -14,4 +14,7 @@ curl -# $ZIP_URL > $ZIP_FILE
 echo "unzipping.."
 unzip $ZIP_FILE
 mkdir -p "./.heroku/python/lib/python3.9/site-packages/playwright/driver/package/.local-browsers/chromium-$REVISION"
+echo "moving file to .local-browsers directory"
 mv "./chrome-linux" "./.heroku/python/lib/python3.9/site-packages/playwright/driver/package/.local-browsers/chromium-$REVISION/"
+echo "Installation successfull"
+ls "./.heroku/python/lib/python3.9/site-packages/playwright/driver/package/.local-browsers/chromium-$REVISION/"
