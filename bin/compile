@@ -1,6 +1,5 @@
 #!/bin/sh
 
-echo $1
 LASTCHANGE_URL="https://www.googleapis.com/download/storage/v1/b/chromium-browser-snapshots/o/Linux_x64%2FLAST_CHANGE?alt=media"
 
 REVISION=$(curl -s -S $LASTCHANGE_URL)
@@ -14,9 +13,8 @@ rm -rf $REVISION
 curl -# $ZIP_URL > $ZIP_FILE
 echo "unzipping.."
 unzip $ZIP_FILE
-mkdir -p "./.heroku/python/lib/python3.9/site-packages/playwright/driver/package/.local-browsers/chromium-$REVISION"
+mkdir -p "/app/.heroku/python/lib/python3.9/site-packages/playwright/driver/package/.local-browsers/chromium-$REVISION"
 echo "moving file to .local-browsers directory"
-mv "./chrome-linux" "./.heroku/python/lib/python3.9/site-packages/playwright/driver/package/.local-browsers/chromium-$REVISION/"
+mv "./chrome-linux" "/app/.heroku/python/lib/python3.9/site-packages/playwright/driver/package/.local-browsers/chromium-$REVISION/"
 echo "Installation successfull"
-ls "./.heroku/python/lib/python3.9/site-packages/playwright/driver/package/.local-browsers/chromium-$REVISION/"
-pwd
+ls "/app/.heroku/python/lib/python3.9/site-packages/playwright/driver/package/.local-browsers/chromium-$REVISION/"
