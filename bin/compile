@@ -1,11 +1,17 @@
 #!/bin/sh
 
-BIN_DIR=$(cd "$(dirname "$0")"; pwd) # absolute path
-ROOT_DIR=$(dirname "$BIN_DIR")
-cd "$ROOT_DIR"
-echo "-----> Downloaing browsers builds for playwright..."
+LASTCHANGE_URL="https://www.googleapis.com/download/storage/v1/b/chromium-browser-snapshots/o/Linux_x64%2FLAST_CHANGE?alt=media"
 
-cd "$BUILD_DIR"
-python -m playwright install
+REVISION=$(curl -s -S $LASTCHANGE_URL)
+ZIP_URL="https://www.googleapis.com/download/storage/v1/b/chromium-browser-snapshots/o/Linux_x64%2F$REVISION%2Fchrome-linux.zip?alt=media"
 
-echo "-----> Builds downloaded"
+ZIP_FILE="${REVISION}-chrome-linux.zip"
+
+echo "fetching $ZIP_URL"
+
+rm -rf $REVISION
+curl -# $ZIP_URL > $ZIP_FILE
+echo "unzipping.."
+unzip $ZIP_FILE
+mkdir -p "./.heroku/python/lib/python3.9/site-packages/playwright/driver/package/.local-browsers/chromium-$REVISION"
+mv "./chrome-linux" "./.heroku/python/lib/python3.9/site-packages/playwright/driver/package/.local-browsers/chromium-$REVISION/"
